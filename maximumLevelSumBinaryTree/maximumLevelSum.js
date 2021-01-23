@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Given the root of a binary tree, the level of its root is 1
  * the level of its children is 2, and so on.
@@ -21,8 +22,8 @@
 
 // Constraints:
 
-// The number of nodes in the tree is in the range [1, 104].
-// -105 <= Node.val <= 105
+// The number of nodes in the tree is in the range [1, 10**4].
+// -10**5 <= Node.val <= 10**5
 
 /**
  * Definition for a binary tree node.
@@ -39,3 +40,26 @@
 const maxLevelSum = (root) => {
 
 };
+
+function TreeNode(val, left, right) {
+  this.val = (val === undefined ? 0 : val);
+  this.left = (left === undefined ? null : left);
+  this.right = (right === undefined ? null : right);
+}
+
+// ASSERTION FUNCTION
+const assertEqual = (actual, expected, testName) => {
+  if (actual === expected) {
+    return console.log('passed');
+  }
+  return console.log(`FAILED "${testName}" expected "${expected}", but got "${actual}"`);
+};
+
+// TEST SUITE
+const actual1 = maxLevelSum([1, 7, 0, 7, -8, null, null]);
+const expected1 = 2;
+assertEqual(actual1, expected1, 'it should return the smallest level with the largest sum');
+
+const actual2 = maxLevelSum([989, null, 10250, 98693, -89388, null, null, null, -32127]);
+const expected2 = 2;
+assertEqual(actual2, expected2, 'it should return the smallest level with the largest sum');

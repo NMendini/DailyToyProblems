@@ -38,7 +38,82 @@
  * @return {number}
  */
 const maxLevelSum = (root) => {
+  // if root length is 1
+  if (root.length === 1) {
+    // return 1
+    return 1;
+  }
 
+  // create levelSums object with key of 1 set to root at 0
+  const levelSums = { 1: root[0] };
+  // create level variable
+
+  // create leftIndex function -params (index)
+  const leftIndex = (index) => index * 2 + 1;
+    // return index multiplied by 2 + 1
+
+  // create rightIndex function -params (index)
+  const rightIndex = (index) => index * 2 + 2;
+    // return index multiplied by 2 + 2
+
+  // innerFunc -params(index, currentLevel)
+  const innerFunc = (index, currentLevel) => {
+    // create left variable equal to root at leftIndex(index) or 0
+    const left = root[leftIndex(index)] || 0;
+    // create right variable equal to root at rightIndex(index) or 0
+    const right = root[rightIndex(index)] || 0;
+
+    // create sum variable equal to left + right
+    const sum = left + right;
+
+    // if levelSums at currentLevel is equal to undefined
+    if (levelSums[currentLevel] === undefined) {
+      // set levelSums at current level equal to sum
+      levelSums[currentLevel] = sum;
+    // otherwise
+    } else {
+      // add sum to levelSums at current level
+      levelSums[currentLevel] += sum;
+    }
+
+    // if levelSums at currentLevel + 1 does not exist
+    if (!levelSums[currentLevel + 1]) {
+      // if root at rightIndex(index +2)
+      if (root[rightIndex(index + 2)]) {
+        // invoke innerFunc with index + 2, currentLevel + 1
+        innerFunc(index + 2, currentLevel + 1);
+      }
+      // if root at leftIndex(index +1)
+      if (root[leftIndex(index + 1)]) {
+        // invoke innerFunc with index + 1, currentLevel + 1
+        innerFunc(index + 1, currentLevel + 1);
+      }
+    }
+  };
+  // invoke innerFunc with 0 and 2
+  innerFunc(0, 2);
+
+  // create maxSum variable equal to root at 0
+  let maxSum = root[0];
+  // create level equal to 0
+  let level = 1;
+  // create levelKeys equal to Object.keys from levelSums
+  const levelKeys = Object.keys(levelSums);
+
+  // iterate through levelKeys
+  for (let i = 0; i < levelKeys.length; i += 1) {
+    const current = levelSums[levelKeys[i]];
+    // if current is greater than maxSum
+    if (current > maxSum) {
+      // set maxSum to current
+      maxSum = current;
+      // set level to current key
+      level = Number(levelKeys[i]);
+    }
+  }
+
+  // return level
+  return level;
 };
 
 function TreeNode(val, left, right) {

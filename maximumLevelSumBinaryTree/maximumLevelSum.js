@@ -88,6 +88,8 @@
 
 const maxLevelSum = (root) => {
   const levelSums = {};
+  let maxSum = root.val;
+  let lowestLevel = 1;
 
   const innerFunc = (node, level) => {
     if (levelSums[level] === undefined) {
@@ -106,8 +108,6 @@ const maxLevelSum = (root) => {
   };
   innerFunc(root, 1);
 
-  let maxSum = root.val;
-  let level = 1;
   const levelKeys = Object.keys(levelSums);
 
   for (let i = 0; i < levelKeys.length; i += 1) {
@@ -115,11 +115,11 @@ const maxLevelSum = (root) => {
 
     if (current > maxSum) {
       maxSum = current;
-      level = Number(levelKeys[i]);
+      lowestLevel = Number(levelKeys[i]);
     }
   }
 
-  return level;
+  return lowestLevel;
 };
 
 function TreeNode(val, left, right) {
@@ -137,18 +137,18 @@ const assertEqual = (actual, expected, testName) => {
 };
 
 // TEST SUITE
-const root = new TreeNode(1);
+const root1 = new TreeNode(1);
 const a = new TreeNode(7);
 const b = new TreeNode(0);
 const c = new TreeNode(7);
 const d = new TreeNode(-8);
 
-root.left = a;
-root.right = b;
+root1.left = a;
+root1.right = b;
 a.left = c;
 a.right = d;
 
-const actual1 = maxLevelSum(root);
+const actual1 = maxLevelSum(root1);
 const expected1 = 2;
 assertEqual(actual1, expected1, 'it should return the smallest level with the largest sum');
 

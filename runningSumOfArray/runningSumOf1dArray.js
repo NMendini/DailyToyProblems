@@ -58,3 +58,14 @@ const assertArraysEqual = (actual, expected, testName) => {
 };
 
 // TEST SUITE
+const actual1 = runningSum([1, 2, 3, 4]);
+const expected1 = [1, 3, 6, 10];
+assertArraysEqual(actual1, expected1, 'it should return an array that reflects a running sum of the input');
+
+const actual2 = runningSum([1, 1, 1, 1, 1]);
+const expected2 = [1, 2, 3, 4, 5];
+assertArraysEqual(actual2, expected2, 'it should return an array that reflects a running sum of the input when provided numbers are the same');
+
+const actual3 = runningSum([1, -1, 1, -1, 1]);
+const expected3 = [1, 0, 1, 0, 1];
+assertArraysEqual(actual3, expected3, 'it should return an array that reflects a running sum of the input when provided numbers are include negatives');

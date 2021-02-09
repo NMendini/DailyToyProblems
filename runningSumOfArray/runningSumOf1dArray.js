@@ -30,8 +30,26 @@ Constraints:
  * @return {number[]}
  */
 
-var runningSum = function(nums) {
+const runningSum = (nums) => {
+  // if nums length is 1
+  if (nums.length === 1) {
+    // return nums
+    return nums;
+  }
 
+  // create empty array result variable
+  const result = [];
+
+  // iterate through nums starting on index 1
+  for (let i = 0; i < nums.length; i += 1) {
+    // push sum of nums at current and result at previous
+    const current = nums[i];
+    const previous = result[i - 1] || 0;
+    result.push(current + previous);
+  }
+
+  // return result
+  return result;
 };
 
 // ASSERTION FUNCTION
@@ -46,7 +64,7 @@ const assertArraysEqual = (actual, expected, testName) => {
   for (let i = 0; i < actual.length; i += 1) {
     if (actual[i] !== expected[i]) {
       sameIndex = false;
-      return;
+      break;
     }
   }
 

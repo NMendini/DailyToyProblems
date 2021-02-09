@@ -31,24 +31,18 @@ Constraints:
  */
 
 const runningSum = (nums) => {
-  // if nums length is 1
   if (nums.length === 1) {
-    // return nums
     return nums;
   }
 
-  // create empty array result variable
   const result = [];
 
-  // iterate through nums starting on index 1
   for (let i = 0; i < nums.length; i += 1) {
-    // push sum of nums at current and result at previous
     const current = nums[i];
     const previous = result[i - 1] || 0;
     result.push(current + previous);
   }
 
-  // return result
   return result;
 };
 
@@ -87,3 +81,7 @@ assertArraysEqual(actual2, expected2, 'it should return an array that reflects a
 const actual3 = runningSum([1, -1, 1, -1, 1]);
 const expected3 = [1, 0, 1, 0, 1];
 assertArraysEqual(actual3, expected3, 'it should return an array that reflects a running sum of the input when provided numbers are include negatives');
+
+const actual4 = runningSum([100]);
+const expected4 = [100];
+assertArraysEqual(actual4, expected4, 'it should return the given array if the length is 1');

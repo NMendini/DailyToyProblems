@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Given the array queries of positive integers between 1 and m, you
  * have to process all queries[i] (from i=0 to i=queries.length-1) according to the following rules:
@@ -71,3 +72,14 @@ const assertArraysEqual = (actual, expected, testName) => {
 };
 
 // TEST SUITE
+const actual1 = processQueries([3, 1, 2, 1], 5);
+const expected1 = [2, 1, 2, 1];
+assertArraysEqual(actual1, expected1, 'it should return an array containing position indices of each query');
+
+const actual2 = processQueries([4, 1, 2, 2], 4);
+const expected2 = [3, 1, 2, 0];
+assertArraysEqual(actual2, expected2, 'it should return an array containing position indices of each query');
+
+const actual3 = processQueries([7, 5, 5, 8, 3], 8);
+const expected3 = [6, 5, 0, 7, 5];
+assertArraysEqual(actual3, expected3, 'it should return an array containing position indices of each query');

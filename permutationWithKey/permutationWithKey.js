@@ -45,6 +45,19 @@ Constraints:
  * @return {number[]}
  */
 var processQueries = function(queries, m) {
+  // create empty array P variable
+  // iterate from 1 to m inclusive
+    // push current to P
+
+  // create empty array result variable
+
+  // iterate over queries array
+    // create index variable set to index of current in P
+    // push index to result
+    // shift P at index to P
+    // delete P at index + 1
+
+  // return result
 
 };
 

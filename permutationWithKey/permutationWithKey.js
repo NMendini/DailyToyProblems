@@ -44,21 +44,33 @@ Constraints:
  * @param {number} m
  * @return {number[]}
  */
-var processQueries = function(queries, m) {
+const processQueries = (queries, m) => {
   // create empty array P variable
+  let P = [];
+
   // iterate from 1 to m inclusive
-    // push current to P
+  for (let i = 1; i <= m; i += 1) {
+    // push i to P
+    P.push(i);
+  }
 
   // create empty array result variable
+  const result = [];
 
   // iterate over queries array
+  for (let i = 0; i < queries.length; i += 1) {
     // create index variable set to index of current in P
+    const index = P.indexOf(queries[i]);
     // push index to result
-    // shift P at index to P
+    result.push(index);
+    // unshift P at index to P
+    P.unshift(P[index]);
     // delete P at index + 1
+    P.splice(index + 1, 1);
+  }
 
   // return result
-
+  return result;
 };
 
 // ASSERTION FUNCTION

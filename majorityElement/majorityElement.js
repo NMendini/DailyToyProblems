@@ -29,27 +29,18 @@ Follow-up: Could you solve the problem in linear time and in O(1) space?
  * @return {number}
  */
 const majorityElement = (nums) => {
-  // create counts object
   const counts = {};
-  // create len variable equal to length of nums
   const len = nums.length;
 
-  // iterate over nums
   for (let i = 0; i < len; i += 1) {
     const current = nums[i];
-    // if counts at current is undefined
     if (counts[current] === undefined) {
-      // set counts at current to 1
       counts[current] = 1;
-      // otherwise
     } else {
-      // increment counts at current
       counts[current] += 1;
     }
 
-    // if counts at current is greater than len
     if (counts[current] > len / 2) {
-      // return current
       return current;
     }
   }

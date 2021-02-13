@@ -31,6 +31,7 @@ Follow-up: Could you solve the problem in linear time and in O(1) space?
 const majorityElement = (nums) => {
   const counts = {};
   const len = nums.length;
+  let result;
 
   for (let i = 0; i < len; i += 1) {
     const current = nums[i];
@@ -41,9 +42,11 @@ const majorityElement = (nums) => {
     }
 
     if (counts[current] > len / 2) {
-      return current;
+      result = current;
+      break;
     }
   }
+  return result;
 };
 
 // ASSERTION FUNCTION

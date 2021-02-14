@@ -80,7 +80,7 @@ Submissions
 /**
  * @param {number[][]} rectangle
  */
-var SubrectangleQueries = function(rectangle) {
+const SubrectangleQueries = (rectangle) => {
 
 };
 
@@ -92,7 +92,7 @@ var SubrectangleQueries = function(rectangle) {
  * @param {number} newValue
  * @return {void}
  */
-SubrectangleQueries.prototype.updateSubrectangle = function(row1, col1, row2, col2, newValue) {
+SubrectangleQueries.prototype.updateSubrectangle = (row1, col1, row2, col2, newValue) => {
 
 };
 
@@ -101,7 +101,7 @@ SubrectangleQueries.prototype.updateSubrectangle = function(row1, col1, row2, co
  * @param {number} col
  * @return {number}
  */
-SubrectangleQueries.prototype.getValue = function(row, col) {
+SubrectangleQueries.prototype.getValue = (row, col) => {
 
 };
 

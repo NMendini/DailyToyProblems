@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /**
- * Implement the class SubrectangleQueries which receives a rows x cols rectangle as a matrix of integers in the constructor and supports two methods:
+ * Implement the class SubrectangleQueries which receives a rows x cols rectangle as a matrix
+ * of integers in the constructor and supports two methods:
 
 1. updateSubrectangle(int row1, int col1, int row2, int col2, int newValue)
 
@@ -93,9 +94,14 @@ const SubrectangleQueries = function (rectangle) {
  * @return {void}
  */
 SubrectangleQueries.prototype.updateSubrectangle = function (row1, col1, row2, col2, newValue) {
-
-
-
+  // iterate through rows from row1 to row2
+  for (let i = row1; i <= row2; i += 1) {
+    // iterate through columns from col1 to col2
+    for (let j = col1; j <= col2; j += 1) {
+      // set this matrix at current row and col to newValue
+      this.matrix[i][j] = newValue;
+    }
+  }
 };
 
 /**

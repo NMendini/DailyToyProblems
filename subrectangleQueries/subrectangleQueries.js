@@ -80,8 +80,8 @@ Submissions
 /**
  * @param {number[][]} rectangle
  */
-const SubrectangleQueries = (rectangle) => {
-
+const SubrectangleQueries = function (rectangle) {
+  this.matrix = rectangle;
 };
 
 /**
@@ -92,7 +92,7 @@ const SubrectangleQueries = (rectangle) => {
  * @param {number} newValue
  * @return {void}
  */
-SubrectangleQueries.prototype.updateSubrectangle = (row1, col1, row2, col2, newValue) => {
+SubrectangleQueries.prototype.updateSubrectangle = function (row1, col1, row2, col2, newValue) {
 
 };
 
@@ -101,8 +101,8 @@ SubrectangleQueries.prototype.updateSubrectangle = (row1, col1, row2, col2, newV
  * @param {number} col
  * @return {number}
  */
-SubrectangleQueries.prototype.getValue = (row, col) => {
-
+SubrectangleQueries.prototype.getValue = function (row, col) {
+  return this.matrix[row][col];
 };
 
 /**
@@ -122,3 +122,14 @@ const assertEqual = (actual, expected, testName) => {
 };
 
 // TEST SUITE
+const myRectangle = new SubrectangleQueries([
+  [1, 2, 1],
+  [4, 3, 4],
+  [3, 2, 1],
+  [1, 1, 1],
+]);
+
+const actual1 = myRectangle.getValue(0, 2);
+const expected1 = 1;
+assertEqual(actual1, expected1, 'it should return the value at row and col');
+

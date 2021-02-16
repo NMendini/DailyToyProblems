@@ -94,6 +94,8 @@ const SubrectangleQueries = function (rectangle) {
  */
 SubrectangleQueries.prototype.updateSubrectangle = function (row1, col1, row2, col2, newValue) {
 
+
+
 };
 
 /**
@@ -133,3 +135,14 @@ const actual1 = myRectangle.getValue(0, 2);
 const expected1 = 1;
 assertEqual(actual1, expected1, 'it should return the value at row and col');
 
+myRectangle.updateSubrectangle(0, 0, 3, 2, 5);
+
+const actual2 = myRectangle.getValue(0, 2);
+const expected2 = 5;
+assertEqual(actual2, expected2, 'it should return the value at row and col after an update');
+
+myRectangle.updateSubrectangle(3, 0, 3, 2, 10);
+
+const actual3 = myRectangle.getValue(3, 1);
+const expected3 = 10;
+assertEqual(actual3, expected3, 'it should return the value at row and col after multiple updates');

@@ -94,11 +94,8 @@ const SubrectangleQueries = function (rectangle) {
  * @return {void}
  */
 SubrectangleQueries.prototype.updateSubrectangle = function (row1, col1, row2, col2, newValue) {
-  // iterate through rows from row1 to row2
   for (let i = row1; i <= row2; i += 1) {
-    // iterate through columns from col1 to col2
     for (let j = col1; j <= col2; j += 1) {
-      // set this matrix at current row and col to newValue
       this.matrix[i][j] = newValue;
     }
   }

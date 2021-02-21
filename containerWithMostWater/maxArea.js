@@ -36,7 +36,7 @@ n == height.length
  * @param {number[]} height
  * @return {number}
  */
-var maxArea = function(height) {
+const maxArea = function(height) {
 
 };
 
@@ -50,3 +50,14 @@ const assertEqual = (actual, expected, testName) => {
 };
 
 // TEST SUITE
+const actual1 = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+const expected1 = 49;
+assertEqual(actual1, expected1, 'it should return the largest amount the container can hold');
+
+const actual2 = [1, 1];
+const expected2 = 1;
+assertEqual(actual2, expected2, 'it should return the largest amount the container can hold when only 2 indices are given');
+
+const actual3 = [1, 2, 1];
+const expected3 = 2;
+assertEqual(actual3, expected3, 'it should return the largest amount the container can hold when inner indices are higher');

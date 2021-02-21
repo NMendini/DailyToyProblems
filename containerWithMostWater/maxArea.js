@@ -37,7 +37,19 @@ n == height.length
  * @return {number}
  */
 const maxArea = function(height) {
+  // create maxVolume variable, set to 0
 
+  // iterate through height
+    // set variable left to current
+    // iterate through height from i + 1
+      // set variable right to current
+      // set distance to j - i
+      // set wallHeight to lesser of left or right
+      // set volume to product of distance and wallHeight
+      // if volume is greater than maxVolume
+        // set maxVolume to volume
+
+  // return maxVolume
 };
 
 // ASSERTION FUNCTION

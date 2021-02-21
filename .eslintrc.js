@@ -12,5 +12,6 @@ module.exports = {
   },
   rules: {
     'func-names': ['error', 'never'],
+    'no-console': 'off',
   },
 };

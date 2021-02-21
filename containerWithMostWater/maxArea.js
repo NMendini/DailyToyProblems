@@ -36,20 +36,24 @@ n == height.length
  * @param {number[]} height
  * @return {number}
  */
-const maxArea = function(height) {
-  // create maxVolume variable, set to 0
+const maxArea = function (height) {
+  let maxVolume = 0;
 
-  // iterate through height
-    // set variable left to current
-    // iterate through height from i + 1
-      // set variable right to current
-      // set distance to j - i
-      // set wallHeight to lesser of left or right
-      // set volume to product of distance and wallHeight
-      // if volume is greater than maxVolume
-        // set maxVolume to volume
+  for (let i = 0; i < height.length; i += 1) {
+    const left = height[i];
+    for (let j = i + 1; j < height.length; j += 1) {
+      const right = height[j];
+      const distance = j - i;
+      const wallHeight = left < right ? left : right;
+      const volume = distance * wallHeight;
 
-  // return maxVolume
+      if (volume > maxVolume) {
+        maxVolume = volume;
+      }
+    }
+  }
+
+  return maxVolume;
 };
 
 // ASSERTION FUNCTION
@@ -62,14 +66,14 @@ const assertEqual = (actual, expected, testName) => {
 };
 
 // TEST SUITE
-const actual1 = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+const actual1 = maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);
 const expected1 = 49;
 assertEqual(actual1, expected1, 'it should return the largest amount the container can hold');
 
-const actual2 = [1, 1];
+const actual2 = maxArea([1, 1]);
 const expected2 = 1;
 assertEqual(actual2, expected2, 'it should return the largest amount the container can hold when only 2 indices are given');
 
-const actual3 = [1, 2, 1];
+const actual3 = maxArea([1, 2, 1]);
 const expected3 = 2;
 assertEqual(actual3, expected3, 'it should return the largest amount the container can hold when inner indices are higher');

@@ -22,7 +22,12 @@ The given address is a valid IPv4 address.
  * @return {string}
  */
 const defangIPaddr = function(address) {
+  // create defangedIP variable
 
+  // set defangedIP to split of address on "."
+  // set defangedIP to join of address on "[.]"
+
+  // return defangedIP
 };
 
 // ASSERTION FUNCTION

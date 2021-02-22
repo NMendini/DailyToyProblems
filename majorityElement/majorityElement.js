@@ -1,4 +1,7 @@
+
 /* eslint-disable no-console */
+
+
 /**
  * Given an array nums of size n, return the majority element.
 
@@ -28,6 +31,7 @@ Follow-up: Could you solve the problem in linear time and in O(1) space?
  * @param {number[]} nums
  * @return {number}
  */
+
 const majorityElement = (nums) => {
   const counts = {};
   const len = nums.length;

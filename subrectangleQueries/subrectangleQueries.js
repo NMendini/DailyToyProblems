@@ -81,8 +81,10 @@ Submissions
 /**
  * @param {number[][]} rectangle
  */
+
 const SubrectangleQueries = function (rectangle) {
   this.matrix = rectangle;
+
 };
 
 /**
@@ -93,6 +95,7 @@ const SubrectangleQueries = function (rectangle) {
  * @param {number} newValue
  * @return {void}
  */
+
 SubrectangleQueries.prototype.updateSubrectangle = function (row1, col1, row2, col2, newValue) {
   for (let i = row1; i <= row2; i += 1) {
     for (let j = col1; j <= col2; j += 1) {
@@ -106,8 +109,10 @@ SubrectangleQueries.prototype.updateSubrectangle = function (row1, col1, row2, c
  * @param {number} col
  * @return {number}
  */
+
 SubrectangleQueries.prototype.getValue = function (row, col) {
   return this.matrix[row][col];
+
 };
 
 /**

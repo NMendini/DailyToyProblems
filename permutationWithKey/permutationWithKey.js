@@ -1,4 +1,6 @@
+
 /* eslint-disable no-console */
+
 /**
  * Given the array queries of positive integers between 1 and m, you
  * have to process all queries[i] (from i=0 to i=queries.length-1) according to the following rules:
@@ -44,6 +46,7 @@ Constraints:
  * @param {number} m
  * @return {number[]}
  */
+
 const processQueries = (queries, m) => {
   const P = [];
 

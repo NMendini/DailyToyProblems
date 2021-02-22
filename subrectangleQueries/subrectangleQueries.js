@@ -84,7 +84,6 @@ Submissions
 
 const SubrectangleQueries = function (rectangle) {
   this.matrix = rectangle;
-
 };
 
 /**
@@ -112,7 +111,6 @@ SubrectangleQueries.prototype.updateSubrectangle = function (row1, col1, row2, c
 
 SubrectangleQueries.prototype.getValue = function (row, col) {
   return this.matrix[row][col];
-
 };
 
 /**

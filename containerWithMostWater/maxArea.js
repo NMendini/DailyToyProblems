@@ -78,5 +78,3 @@ assertEqual(actual2, expected2, 'it should return the largest amount the contain
 const actual3 = maxArea([1, 2, 1]);
 const expected3 = 2;
 assertEqual(actual3, expected3, 'it should return the largest amount the container can hold when inner indices are higher');
-
-

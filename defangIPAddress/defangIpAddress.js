@@ -21,7 +21,7 @@ The given address is a valid IPv4 address.
  * @param {string} address
  * @return {string}
  */
-const defangIPaddr = function(address) {
+const defangIPaddr = function (address) {
   let defangedIP = address.split('.');
   defangedIP = defangedIP.join('[.]');
   return defangedIP;

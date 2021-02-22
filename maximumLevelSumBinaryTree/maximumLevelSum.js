@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Given the root of a binary tree, the level of its root is 1
  * the level of its children is 2, and so on.
@@ -21,8 +22,8 @@
 
 // Constraints:
 
-// The number of nodes in the tree is in the range [1, 104].
-// -105 <= Node.val <= 105
+// The number of nodes in the tree is in the range [1, 10**4].
+// -10**5 <= Node.val <= 10**5
 
 /**
  * Definition for a binary tree node.
@@ -36,6 +37,121 @@
  * @param {TreeNode} root
  * @return {number}
  */
-const maxLevelSum = (root) => {
+// const maxLevelSum = (root) => {
+//   if (root.length === 1) {
+//     return 1;
+//   }
 
+//   const levelSums = { 1: root[0] };
+
+//   const leftIndex = (index) => index * 2 + 1;
+//   const rightIndex = (index) => index * 2 + 2;
+
+//   const innerFunc = (index, currentLevel) => {
+//     const left = root[leftIndex(index)] || 0;
+//     const right = root[rightIndex(index)] || 0;
+
+//     const sum = left + right;
+
+//     if (levelSums[currentLevel] === undefined) {
+//       levelSums[currentLevel] = sum;
+//     } else {
+//       levelSums[currentLevel] += sum;
+//     }
+
+//     if (!levelSums[currentLevel + 1]) {
+//       if (root[rightIndex(index + 2)]) {
+//         innerFunc(index + 2, currentLevel + 1);
+//       }
+//       if (root[leftIndex(index + 1)]) {
+//         innerFunc(index + 1, currentLevel + 1);
+//       }
+//     }
+//   };
+//   innerFunc(0, 2);
+
+//   let maxSum = root[0];
+//   let level = 1;
+//   const levelKeys = Object.keys(levelSums);
+
+//   for (let i = 0; i < levelKeys.length; i += 1) {
+//     const current = levelSums[levelKeys[i]];
+
+//     if (current > maxSum) {
+//       maxSum = current;
+//       level = Number(levelKeys[i]);
+//     }
+//   }
+
+//   return level;
+// };
+
+const maxLevelSum = (root) => {
+  const levelSums = {};
+  let maxSum = root.val;
+  let lowestLevel = 1;
+
+  const innerFunc = (node, level) => {
+    if (levelSums[level] === undefined) {
+      levelSums[level] = node.val;
+    } else {
+      levelSums[level] += node.val;
+    }
+
+    if (node.left) {
+      innerFunc(node.left, level + 1);
+    }
+
+    if (node.right) {
+      innerFunc(node.right, level + 1);
+    }
+  };
+  innerFunc(root, 1);
+
+  const levelKeys = Object.keys(levelSums);
+
+  for (let i = 0; i < levelKeys.length; i += 1) {
+    const current = levelSums[levelKeys[i]];
+
+    if (current > maxSum) {
+      maxSum = current;
+      lowestLevel = Number(levelKeys[i]);
+    }
+  }
+
+  return lowestLevel;
 };
+
+function TreeNode(val, left, right) {
+  this.val = (val === undefined ? 0 : val);
+  this.left = (left === undefined ? null : left);
+  this.right = (right === undefined ? null : right);
+}
+
+// ASSERTION FUNCTION
+const assertEqual = (actual, expected, testName) => {
+  if (actual === expected) {
+    return console.log('passed');
+  }
+  return console.log(`FAILED "${testName}" expected "${expected}", but got "${actual}"`);
+};
+
+// TEST SUITE
+const root1 = new TreeNode(1);
+const a = new TreeNode(7);
+const b = new TreeNode(0);
+const c = new TreeNode(7);
+const d = new TreeNode(-8);
+
+root1.left = a;
+root1.right = b;
+a.left = c;
+a.right = d;
+
+const actual1 = maxLevelSum(root1);
+const expected1 = 2;
+assertEqual(actual1, expected1, 'it should return the smallest level with the largest sum');
+
+// const actual2 = maxLevelSum([989, null, 10250, 98693, -89388, null, null, null, -32127]);
+// const expected2 = 2;
+// assertEqual(actual2, expected2, 'it should return the smallest level with the largest sum');

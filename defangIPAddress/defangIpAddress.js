@@ -21,7 +21,7 @@ The given address is a valid IPv4 address.
  * @param {string} address
  * @return {string}
  */
-var defangIPaddr = function(address) {
+const defangIPaddr = function(address) {
 
 };
 
@@ -35,3 +35,10 @@ const assertEqual = (actual, expected, testName) => {
 };
 
 // TEST SUITE
+const actual1 = defangIPaddr('1.1.1.1');
+const expected1 = '1[.]1[.]1[.]1';
+assertEqual(actual1, expected1, 'it should return defanged IP address as string');
+
+const actual2 = defangIPaddr('255.100.50.0');
+const expected2 = '255[.]100[.]50[.]0';
+assertEqual(actual2, expected2, 'it should return defanged IP address as string');

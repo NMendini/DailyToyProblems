@@ -36,6 +36,47 @@ n == height.length
  * @param {number[]} height
  * @return {number}
  */
-var maxArea = function(height) {
 
+const maxArea = function (height) {
+  let maxVolume = 0;
+
+  for (let i = 0; i < height.length; i += 1) {
+    const left = height[i];
+    for (let j = i + 1; j < height.length; j += 1) {
+      const right = height[j];
+      const distance = j - i;
+      const wallHeight = left < right ? left : right;
+      const volume = distance * wallHeight;
+
+      if (volume > maxVolume) {
+        maxVolume = volume;
+      }
+    }
+  }
+
+  return maxVolume;
 };
+
+// ASSERTION FUNCTION
+const assertEqual = (actual, expected, testName) => {
+  if (actual === expected) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED "${testName}" expected "${expected}", but got "${actual}"`);
+  }
+};
+
+// TEST SUITE
+const actual1 = maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);
+const expected1 = 49;
+assertEqual(actual1, expected1, 'it should return the largest amount the container can hold');
+
+const actual2 = maxArea([1, 1]);
+const expected2 = 1;
+assertEqual(actual2, expected2, 'it should return the largest amount the container can hold when only 2 indices are given');
+
+const actual3 = maxArea([1, 2, 1]);
+const expected3 = 2;
+assertEqual(actual3, expected3, 'it should return the largest amount the container can hold when inner indices are higher');
+
+

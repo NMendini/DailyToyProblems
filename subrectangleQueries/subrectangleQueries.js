@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 /**
- * Implement the class SubrectangleQueries which receives a rows x cols rectangle as a matrix of integers in the constructor and supports two methods:
+ * Implement the class SubrectangleQueries which receives a rows x cols rectangle as a matrix
+ * of integers in the constructor and supports two methods:
 
 1. updateSubrectangle(int row1, int col1, int row2, int col2, int newValue)
 
@@ -79,7 +81,9 @@ Submissions
 /**
  * @param {number[][]} rectangle
  */
-var SubrectangleQueries = function(rectangle) {
+
+const SubrectangleQueries = function (rectangle) {
+  this.matrix = rectangle;
 
 };
 
@@ -91,8 +95,13 @@ var SubrectangleQueries = function(rectangle) {
  * @param {number} newValue
  * @return {void}
  */
-SubrectangleQueries.prototype.updateSubrectangle = function(row1, col1, row2, col2, newValue) {
 
+SubrectangleQueries.prototype.updateSubrectangle = function (row1, col1, row2, col2, newValue) {
+  for (let i = row1; i <= row2; i += 1) {
+    for (let j = col1; j <= col2; j += 1) {
+      this.matrix[i][j] = newValue;
+    }
+  }
 };
 
 /**
@@ -100,7 +109,9 @@ SubrectangleQueries.prototype.updateSubrectangle = function(row1, col1, row2, co
  * @param {number} col
  * @return {number}
  */
-SubrectangleQueries.prototype.getValue = function(row, col) {
+
+SubrectangleQueries.prototype.getValue = function (row, col) {
+  return this.matrix[row][col];
 
 };
 
@@ -110,3 +121,36 @@ SubrectangleQueries.prototype.getValue = function(row, col) {
  * obj.updateSubrectangle(row1,col1,row2,col2,newValue)
  * var param_2 = obj.getValue(row,col)
  */
+
+// ASSERT FUNCTION
+const assertEqual = (actual, expected, testName) => {
+  if (actual === expected) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED "${testName}" expected "${expected}", but got "${actual}"`);
+  }
+};
+
+// TEST SUITE
+const myRectangle = new SubrectangleQueries([
+  [1, 2, 1],
+  [4, 3, 4],
+  [3, 2, 1],
+  [1, 1, 1],
+]);
+
+const actual1 = myRectangle.getValue(0, 2);
+const expected1 = 1;
+assertEqual(actual1, expected1, 'it should return the value at row and col');
+
+myRectangle.updateSubrectangle(0, 0, 3, 2, 5);
+
+const actual2 = myRectangle.getValue(0, 2);
+const expected2 = 5;
+assertEqual(actual2, expected2, 'it should return the value at row and col after an update');
+
+myRectangle.updateSubrectangle(3, 0, 3, 2, 10);
+
+const actual3 = myRectangle.getValue(3, 1);
+const expected3 = 10;
+assertEqual(actual3, expected3, 'it should return the value at row and col after multiple updates');

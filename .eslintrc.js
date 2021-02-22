@@ -11,5 +11,7 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {
+    'func-names': ['error', 'never'],
+    'no-console': 'off',
   },
 };

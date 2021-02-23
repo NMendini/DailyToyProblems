@@ -54,21 +54,39 @@ const maxDiff = (num) => {
   for (let i = 0; i < numString.length; i += 1) {
     if (numString[i] !== '9') {
       const temp = numString[i];
-      firstInt = Number(numString.replaceAll(temp, '9'));
+      let tempString = numString;
+      for (let j = i; j < numString.length; j += 1) {
+        if (numString[j] === temp) {
+          tempString = `${tempString.substring(0, j)}9${tempString.substring(j + 1)}`;
+        }
+      }
+      firstInt = Number(tempString);
       break;
     }
   }
 
-  for (let j = 0; j < numString.length; j += 1) {
-    if (j !== 0) {
-      if (numString[j] !== '0') {
-        const temp = numString[j];
-        secondInt = Number(numString.replaceAll(temp, '0'));
+  for (let i = 0; i < numString.length; i += 1) {
+    if (i !== 0) {
+      if (numString[i] !== '0' && numString[i] !== numString[0]) {
+        const temp = numString[i];
+        let tempString = numString;
+        for (let j = i; j < numString.length; j += 1) {
+          if (numString[j] === temp) {
+            tempString = `${tempString.substring(0, j)}0${tempString.substring(j + 1)}`;
+          }
+        }
+        secondInt = Number(tempString);
         break;
       }
-    } else if (numString[j] !== '1') {
-      const temp = numString[j];
-      secondInt = Number(numString.replaceAll(temp, '1'));
+    } else if (numString[i] !== '1') {
+      const temp = numString[i];
+      let tempString = numString;
+      for (let j = i; j < numString.length; j += 1) {
+        if (numString[j] === temp) {
+          tempString = `${tempString.substring(0, j)}1${tempString.substring(j + 1)}`;
+        }
+      }
+      secondInt = Number(tempString);
       break;
     }
   }
@@ -105,3 +123,7 @@ assertEqual(actual4, expected4, 'it should return the maximum difference between
 const actual5 = maxDiff(9288);
 const expected5 = 8700;
 assertEqual(actual5, expected5, 'it should return the maximum difference between integers when leading number is 9');
+
+const actual6 = maxDiff(111);
+const expected6 = 888;
+assertEqual(actual6, expected6, 'it should return the maximum difference between integers when all numbers are 1');

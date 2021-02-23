@@ -47,5 +47,83 @@ Constraints:
  * @return {number}
  */
 const maxDiff = (num) => {
+  const numString = num.toString();
+  let firstInt = num;
+  let secondInt = num;
 
+  for (let i = 0; i < numString.length; i += 1) {
+    if (numString[i] !== '9') {
+      const temp = numString[i];
+      let tempString = numString;
+      for (let j = i; j < numString.length; j += 1) {
+        if (numString[j] === temp) {
+          tempString = `${tempString.substring(0, j)}9${tempString.substring(j + 1)}`;
+        }
+      }
+      firstInt = Number(tempString);
+      break;
+    }
+  }
+
+  for (let i = 0; i < numString.length; i += 1) {
+    if (i !== 0) {
+      if (numString[i] !== '0' && numString[i] !== numString[0]) {
+        const temp = numString[i];
+        let tempString = numString;
+        for (let j = i; j < numString.length; j += 1) {
+          if (numString[j] === temp) {
+            tempString = `${tempString.substring(0, j)}0${tempString.substring(j + 1)}`;
+          }
+        }
+        secondInt = Number(tempString);
+        break;
+      }
+    } else if (numString[i] !== '1') {
+      const temp = numString[i];
+      let tempString = numString;
+      for (let j = i; j < numString.length; j += 1) {
+        if (numString[j] === temp) {
+          tempString = `${tempString.substring(0, j)}1${tempString.substring(j + 1)}`;
+        }
+      }
+      secondInt = Number(tempString);
+      break;
+    }
+  }
+
+  return firstInt - secondInt;
 };
+
+// ASSERTION FUNCTION
+const assertEqual = (actual, expected, testName) => {
+  if (actual === expected) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED "${testName}" expected "${expected}", but got "${actual}"`);
+  }
+};
+
+// TEST SUITE
+const actual1 = maxDiff(555);
+const expected1 = 888;
+assertEqual(actual1, expected1, 'it should return the maximum difference between integers');
+
+const actual2 = maxDiff(9);
+const expected2 = 8;
+assertEqual(actual2, expected2, 'it should return the maximum difference between integers when a single digit is given');
+
+const actual3 = maxDiff(123456);
+const expected3 = 820000;
+assertEqual(actual3, expected3, 'it should return the maximum difference between integers when leading number is 1');
+
+const actual4 = maxDiff(10000);
+const expected4 = 80000;
+assertEqual(actual4, expected4, 'it should return the maximum difference between integers when leading number is 1');
+
+const actual5 = maxDiff(9288);
+const expected5 = 8700;
+assertEqual(actual5, expected5, 'it should return the maximum difference between integers when leading number is 9');
+
+const actual6 = maxDiff(111);
+const expected6 = 888;
+assertEqual(actual6, expected6, 'it should return the maximum difference between integers when all numbers are 1');

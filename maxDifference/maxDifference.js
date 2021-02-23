@@ -47,7 +47,23 @@ Constraints:
  * @return {number}
  */
 const maxDiff = (num) => {
+  // create numString set to string of num
+  // create firstInt variable
+  // create secondInt variable
 
+  // iterate over numString
+    // if current is not equal to "9"
+      // create temp variable set to current
+      // set firstInt to string with all occurrence of temp replaced with 9
+      // break loop
+
+  // iterate over numString
+    // if current is not equal to "1"
+      // create temp variable set to current
+      // set secondInt to string with all occcurrence of temp replaced with 1
+      // break loop
+
+  // return difference of firstInt and secondInt
 };
 
 // ASSERTION FUNCTION

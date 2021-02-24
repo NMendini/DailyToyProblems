@@ -49,3 +49,29 @@ divisor != 0
 const divide = (dividend, divisor) => {
 
 };
+
+// ASSERTION FUNCTION
+const assertEqual = (actual, expected, testName) => {
+  if (actual === expected) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED "${testName}" expected "${expected}", but got "${actual}"`);
+  }
+};
+
+// TEST SUITE
+const actual1 = divide(10, 3);
+const expected1 = 3;
+assertEqual(actual1, expected1, 'it should return the truncated quotient');
+
+const actual2 = divide(7, -3);
+const expected2 = -2;
+assertEqual(actual2, expected2, 'it should return the truncated quotient when divided by a negative');
+
+const actual3 = divide(0, 1);
+const expected3 = 0;
+assertEqual(actual3, expected3, 'it should return 0 when the dividend is 0');
+
+const actual4 = divide(1, 1);
+const expected4 = 1;
+assertEqual(actual4, expected4, 'it should return 1 when both dividend and divisor are the same');

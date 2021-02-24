@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /**
  * Given two integers dividend and divisor, divide two integers without using multiplication,
  * division, and mod operator.
@@ -47,33 +48,39 @@ divisor != 0
  * @return {number}
  */
 const divide = (dividend, divisor) => {
-  // create isNegative boolean set to false
-  // create quotient set to 0;
-  // create runningDivisor set to divisor
+  let isNegative = false;
+  let quotient = 0;
 
-  // if dividend is 0
-    // return 0
+  if (dividend === 0) {
+    return 0;
+  }
 
-  // if dividend is equal to divisor
-    // return 1
+  if (dividend === divisor) {
+    return 1;
+  }
 
-  // if dividend is less than 0
-    // toggle isNegative
-    // set dividend to absolute value of dividend
+  if (dividend < 0) {
+    isNegative = !isNegative;
+    dividend = Math.abs(dividend);
+  }
 
-  // if divisor is less than 0
-    // toggle isNegative
-    // set divisor to absolute value of divisor
+  if (divisor < 0) {
+    isNegative = !isNegative;
+    divisor = Math.abs(divisor);
+  }
 
-  // while runningDivisor is less than dividend
-    // increment quotient by 1
-    // increment runningDivisor by divisor
+  let runningDivisor = divisor;
 
-  // if isNegative is true
-    // set quotient to negative
+  while (runningDivisor < dividend) {
+    quotient += 1;
+    runningDivisor += divisor;
+  }
 
-  // return quotient
+  if (isNegative) {
+    quotient = -quotient;
+  }
 
+  return quotient;
 };
 
 // ASSERTION FUNCTION

@@ -47,6 +47,32 @@ divisor != 0
  * @return {number}
  */
 const divide = (dividend, divisor) => {
+  // create isNegative boolean set to false
+  // create quotient set to 0;
+  // create runningDivisor set to divisor
+
+  // if dividend is 0
+    // return 0
+
+  // if dividend is equal to divisor
+    // return 1
+
+  // if dividend is less than 0
+    // toggle isNegative
+    // set dividend to absolute value of dividend
+
+  // if divisor is less than 0
+    // toggle isNegative
+    // set divisor to absolute value of divisor
+
+  // while runningDivisor is less than dividend
+    // increment quotient by 1
+    // increment runningDivisor by divisor
+
+  // if isNegative is true
+    // set quotient to negative
+
+  // return quotient
 
 };
 

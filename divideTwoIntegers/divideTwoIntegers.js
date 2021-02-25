@@ -48,6 +48,7 @@ divisor != 0
  * @return {number}
  */
 const divide = (dividend, divisor) => {
+  const maxInt = (2 ** 31) - 1;
   let isNegative = false;
   let quotient = 0;
 
@@ -71,15 +72,22 @@ const divide = (dividend, divisor) => {
 
   let runningDivisor = divisor;
 
-  while (runningDivisor < dividend) {
-    quotient += 1;
-    runningDivisor += divisor;
+  if (divisor !== 1) {
+    while (runningDivisor <= dividend) {
+      quotient += 1;
+      runningDivisor += divisor;
+    }
+  } else {
+    quotient = dividend;
   }
 
   if (isNegative) {
     quotient = -quotient;
   }
 
+  if (quotient > maxInt) {
+    quotient = maxInt;
+  }
   return quotient;
 };
 
@@ -108,3 +116,11 @@ assertEqual(actual3, expected3, 'it should return 0 when the dividend is 0');
 const actual4 = divide(1, 1);
 const expected4 = 1;
 assertEqual(actual4, expected4, 'it should return 1 when both dividend and divisor are the same');
+
+const actual5 = divide(-1, 1);
+const expected5 = -1;
+assertEqual(actual5, expected5, 'it should return -1 when dividend is the negative of the  divisor');
+
+const actual6 = divide(-2147483648, -1);
+const expected6 = 2147483647;
+assertEqual(actual6, expected6, 'it should return 2*31 -1 when quotient overflows');

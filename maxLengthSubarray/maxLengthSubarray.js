@@ -25,3 +25,17 @@ Note:
 var findLength = function(A, B) {
 
 };
+
+// ASSERTION FUNCTION
+const assertEqual = (actual, expected, testName) => {
+  if (actual === expected) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED "${testName}" expected "${expected}", but got "${actual}"`);
+  }
+};
+
+// TEST SUITE
+const actual1 = findLength([1, 2, 3, 2, 1], [3, 2, 1, 4, 7]);
+const expected1 = 3;
+assertEqual(actual1, expected1, 'it should return the length of the longest repeated subarray');

@@ -22,8 +22,22 @@ Note:
  * @param {number[]} B
  * @return {number}
  */
-var findLength = function(A, B) {
+const findLength = (A, B) => {
+  // create maxLength variable set to 0
+  // create index variable set to 0
 
+  // while length of B minus index is less than max
+    // create matchLength set to 0
+
+    // iterate over A
+      // if current is equal to B at index plus matchLength
+        // increment matchLength by 1
+      // otherwise
+        // set maxLength equal to max between maxLength and matchLength
+        // break
+    // increment index by 1
+
+  // return maxLength
 };
 
 // ASSERTION FUNCTION

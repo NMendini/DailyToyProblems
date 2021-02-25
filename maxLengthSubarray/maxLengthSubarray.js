@@ -23,21 +23,24 @@ Note:
  * @return {number}
  */
 const findLength = (A, B) => {
-  // create maxLength variable set to 0
-  // create index variable set to 0
+  let maxLength = 0;
+  let index = 0;
 
-  // while length of B minus index is less than max
-    // create matchLength set to 0
+  while (B.length - index > maxLength) {
+    let matchLength = 0;
 
-    // iterate over A
-      // if current is equal to B at index plus matchLength
-        // increment matchLength by 1
-      // otherwise
-        // set maxLength equal to max between maxLength and matchLength
-        // break
-    // increment index by 1
+    for (let i = 0; i < A.length; i += 1) {
+      if (A[i] === B[index + matchLength]) {
+        matchLength += 1;
+      } else if (matchLength > 0) {
+        break;
+      }
+    }
+    maxLength = Math.max(maxLength, matchLength);
+    index += 1;
+  }
 
-  // return maxLength
+  return maxLength;
 };
 
 // ASSERTION FUNCTION
@@ -53,3 +56,7 @@ const assertEqual = (actual, expected, testName) => {
 const actual1 = findLength([1, 2, 3, 2, 1], [3, 2, 1, 4, 7]);
 const expected1 = 3;
 assertEqual(actual1, expected1, 'it should return the length of the longest repeated subarray');
+
+const actual2 = findLength([1, 2, 3, 2, 1], [5, 4, 3, 2, 1, 4, 7]);
+const expected2 = 3;
+assertEqual(actual2, expected2, 'it should return the length of the longest repeated subarray');

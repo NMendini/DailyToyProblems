@@ -28,13 +28,17 @@ const findLength = (A, B) => {
 
   while (B.length - index > maxLength) {
     let matchLength = 0;
+    let arrayIndex = 0;
 
-    for (let i = 0; i < A.length; i += 1) {
-      if (A[i] === B[index + matchLength]) {
+    while (arrayIndex < A.length && A.length - index > maxLength) {
+      if (A[arrayIndex] === B[index + matchLength]) {
         matchLength += 1;
       } else if (matchLength > 0) {
-        break;
+        maxLength = Math.max(maxLength, matchLength);
+        matchLength = 0;
+        arrayIndex -= 1;
       }
+      arrayIndex += 1;
     }
     maxLength = Math.max(maxLength, matchLength);
     index += 1;
@@ -60,3 +64,7 @@ assertEqual(actual1, expected1, 'it should return the length of the longest repe
 const actual2 = findLength([1, 2, 3, 2, 1], [5, 4, 3, 2, 1, 4, 7]);
 const expected2 = 3;
 assertEqual(actual2, expected2, 'it should return the length of the longest repeated subarray');
+
+const actual3 = findLength([1, 0, 1, 0, 0, 0, 0, 0, 1, 1], [1, 1, 0, 1, 1, 0, 0, 0, 0, 0]);
+const expected3 = 6;
+assertEqual(actual3, expected3, 'it should return the length of the longest repeated subarray');

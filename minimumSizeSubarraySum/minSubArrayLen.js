@@ -34,26 +34,41 @@ solution of which the time complexity is O(n log(n)).
  * @return {number}
  */
 const minSubArrayLen = (target, nums) => {
-  // create minLength variable set to 0
-  // create index
+  let minLength = 0;
+  let index = 0;
 
-  // while index is less than nums length and minLength is not equal to 1
-    // create sum variable set to 0
-    // create currentLength variable set to 0
+  while (index < nums.length && minLength !== 1) {
+    let sum = 0;
+    let currentLength = 0;
 
-    // if current is equal to target
-      // set minLength to 1
-      // break
-    // while sum is less than or equal to target
-      // increment sum by nums at index plus currentLength
-      // increment currentLength by 1
+    while (sum < target) {
+      if (nums[index + currentLength] === target) {
+        minLength = 1;
+        break;
+      }
 
-    // if minLength is equal to 0
-      // set minLength to currentLength
-    // minLength is equal to less of currentLength or minLength
-    // increment index by 1
+      if (nums[index + currentLength]) {
+        sum += nums[index + currentLength];
+        currentLength += 1;
+      } else {
+        break;
+      }
+    }
 
-  // return minLength
+    if (sum >= target) {
+      if (minLength === 0) {
+        minLength = currentLength;
+      } else {
+        minLength = Math.min(minLength, currentLength);
+      }
+    } else if (index === 0) {
+      break;
+    }
+
+    index += 1;
+  }
+
+  return minLength;
 };
 
 // ASSERTION FUNCTION
@@ -77,3 +92,7 @@ assertEqual(actual2, expected2, 'it should return 1 when target exists in array'
 const actual3 = minSubArrayLen(11, [1, 1, 1, 1, 1, 1, 1, 1]);
 const expected3 = 0;
 assertEqual(actual3, expected3, 'it should return 0 when no continguous subarray equals target');
+
+const actual4 = minSubArrayLen(11, [1, 2, 3, 4, 5]);
+const expected4 = 3;
+assertEqual(actual4, expected4, 'it should return the length of the smallest contiguous subarray whose sum equals target');

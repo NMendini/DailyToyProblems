@@ -47,3 +47,14 @@ const assertEqual = (actual, expected, testName) => {
 };
 
 // TEST SUITE
+const actual1 = minSubArrayLen(7, [2, 3, 1, 2, 4, 3]);
+const expected1 = 2;
+assertEqual(actual1, expected1, 'it should return the length of the smallest contiguous subarray whose sum equals target');
+
+const actual2 = minSubArrayLen(4, [1, 4, 4]);
+const expected2 = 1;
+assertEqual(actual2, expected2, 'it should return 1 when target exists in array');
+
+const actual3 = minSubArrayLen(11, [1, 1, 1, 1, 1, 1, 1, 1]);
+const expected3 = 0;
+assertEqual(actual3, expected3, 'it should return 0 when no continguous subarray equals target');

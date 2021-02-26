@@ -30,13 +30,17 @@ const findLength = (A, B) => {
     let matchLength = 0;
     let arrayIndex = 0;
 
-    while (arrayIndex < A.length && A.length - index > maxLength) {
+    while (arrayIndex < A.length) {
+      if (A.length - arrayIndex < maxLength && matchLength === 0) {
+        break;
+      }
+
       if (A[arrayIndex] === B[index + matchLength]) {
         matchLength += 1;
       } else if (matchLength > 0) {
         maxLength = Math.max(maxLength, matchLength);
+        arrayIndex -= matchLength;
         matchLength = 0;
-        arrayIndex -= 1;
       }
       arrayIndex += 1;
     }
@@ -68,3 +72,11 @@ assertEqual(actual2, expected2, 'it should return the length of the longest repe
 const actual3 = findLength([1, 0, 1, 0, 0, 0, 0, 0, 1, 1], [1, 1, 0, 1, 1, 0, 0, 0, 0, 0]);
 const expected3 = 6;
 assertEqual(actual3, expected3, 'it should return the length of the longest repeated subarray');
+
+const actual4 = findLength([0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1], [1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0]);
+const expected4 = 52;
+assertEqual(actual4, expected4, 'it should return the length of the longest repeated subarray');
+
+const actual5 = findLength([0, 0, 0, 0, 0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 1, 0, 0]);
+const expected5 = 9;
+assertEqual(actual5, expected5, 'it should return the length of the longest repeated subarray');

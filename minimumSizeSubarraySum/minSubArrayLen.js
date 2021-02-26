@@ -33,6 +33,17 @@ solution of which the time complexity is O(n log(n)).
  * @param {number[]} nums
  * @return {number}
  */
-var minSubArrayLen = function(target, nums) {
+const minSubArrayLen = (target, nums) => {
 
 };
+
+// ASSERTION FUNCTION
+const assertEqual = (actual, expected, testName) => {
+  if (actual === expected) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED "${testName}" expected "${expected}", but got "${actual}"`);
+  }
+};
+
+// TEST SUITE

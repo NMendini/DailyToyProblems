@@ -34,7 +34,26 @@ solution of which the time complexity is O(n log(n)).
  * @return {number}
  */
 const minSubArrayLen = (target, nums) => {
+  // create minLength variable set to 0
+  // create index
 
+  // while index is less than nums length and minLength is not equal to 1
+    // create sum variable set to 0
+    // create currentLength variable set to 0
+
+    // if current is equal to target
+      // set minLength to 1
+      // break
+    // while sum is less than or equal to target
+      // increment sum by nums at index plus currentLength
+      // increment currentLength by 1
+
+    // if minLength is equal to 0
+      // set minLength to currentLength
+    // minLength is equal to less of currentLength or minLength
+    // increment index by 1
+
+  // return minLength
 };
 
 // ASSERTION FUNCTION

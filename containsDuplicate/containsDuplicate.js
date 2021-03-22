@@ -26,7 +26,15 @@ Constraints:
  * @return {number}
  */
 const trap = (height) => {
+  // create empty haveSeen object
 
+  // iterate through array
+    // if current at haveSeen is falsey
+      // set current at haveSeen to true
+    // otherwise
+      // return false
+
+  // return true
 };
 
 // ASSERTION FUNCTION

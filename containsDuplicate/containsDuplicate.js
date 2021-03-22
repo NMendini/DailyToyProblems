@@ -22,19 +22,16 @@ Constraints:
 */
 
 /**
- * @param {number[]} height
- * @return {number}
+ * @param {number[]} nums
+ * @return {boolean}
  */
-const trap = (height) => {
-  // create empty haveSeen object
+const containsDuplicate = (nums) => {
+  const set = new Set(nums);
 
-  // iterate through array
-    // if current at haveSeen is falsey
-      // set current at haveSeen to true
-    // otherwise
-      // return false
-
-  // return true
+  if (set.size === nums.length) {
+    return false;
+  }
+  return true;
 };
 
 // ASSERTION FUNCTION
@@ -47,14 +44,14 @@ const assertEqual = (actual, expected, testName) => {
 };
 
 // TEST SUITE
-const actual1 = trap([1, 2, 3, 1]);
+const actual1 = containsDuplicate([1, 2, 3, 1]);
 const expected1 = true;
 assertEqual(actual1, expected1, 'it should return true when a duplicate is present');
 
-const actual2 = trap([1, 2, 3, 4]);
+const actual2 = containsDuplicate([1, 2, 3, 4]);
 const expected2 = false;
 assertEqual(actual2, expected2, 'it should return false when no duplicate is present');
 
-const actual3 = trap([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]);
+const actual3 = containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]);
 const expected3 = true;
 assertEqual(actual3, expected3, 'it should return true when multiple duplicates are present');

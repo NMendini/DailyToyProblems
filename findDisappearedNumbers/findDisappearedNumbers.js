@@ -28,3 +28,28 @@ returned list does not count as extra space.
 const findDisappearedNumbers = (nums) => {
 
 };
+
+// ASSERTION FUNCTION
+const assertArraysEqual = (actual, expected, testName) => {
+  let sameLength = true;
+  let sameValues = true;
+
+  if (actual.length !== expected.length) {
+    sameLength = false;
+  }
+
+  for (let i = 0; i < actual.length; i += 1) {
+    if (actual[i] !== expected[i]) {
+      sameValues = false;
+      break;
+    }
+  }
+
+  if (sameLength && sameValues) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED [${testName}] expected ${expected}, but got ${actual}`);
+  }
+};
+
+// TEST SUITE

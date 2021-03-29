@@ -26,19 +26,19 @@ returned list does not count as extra space.
  * @return {number[]}
  */
 const findDisappearedNumbers = (nums) => {
-  const numSet = new Set(nums);
-  const result = [];
+  let result = Array(nums.length).fill(0);
 
-  for (let i = 1; i <= nums.length; i += 1) {
-    const currentSize = numSet.size;
+  for (let i = 0; i < nums.length; i += 1) {
+    result[(nums[i] - 1)] = -1;
+  }
 
-    numSet.add(i);
-
-    if (currentSize !== numSet.size) {
-      result.push(i);
+  for (let i = 0; i < nums.length; i += 1) {
+    if (result[i] === 0) {
+      result[i] = i + 1;
     }
   }
 
+  result = result.filter((i) => i > 0);
   return result;
 };
 

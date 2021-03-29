@@ -30,7 +30,7 @@ const findDisappearedNumbers = (nums) => {
 };
 
 // ASSERTION FUNCTION
-const assertArraysEqual = (actual, expected, testName) => {
+const assertArraysEqual = (actual = [], expected, testName) => {
   let sameLength = true;
   let sameValues = true;
 
@@ -48,8 +48,15 @@ const assertArraysEqual = (actual, expected, testName) => {
   if (sameLength && sameValues) {
     console.log('passed');
   } else {
-    console.log(`FAILED [${testName}] expected ${expected}, but got ${actual}`);
+    console.log(`FAILED "${testName}" expected [${expected}], but got [${actual}]`);
   }
 };
 
 // TEST SUITE
+const actual1 = findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]);
+const expected1 = [5, 6];
+assertArraysEqual(actual1, expected1, 'it should return all numbers that are missing from the range');
+
+const actual2 = findDisappearedNumbers([1, 1]);
+const expected2 = [2];
+assertArraysEqual(actual2, expected2, 'it should return all numbers that are missing from the range');

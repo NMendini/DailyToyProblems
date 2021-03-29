@@ -56,3 +56,18 @@ const assertEqual = (actual, expected, testName) => {
 };
 
 // TEST SUITE
+const actual1 = missingNumber([3, 0, 1]);
+const expected1 = 2;
+assertEqual(actual1, expected1, 'it should return the number missing from range');
+
+const actual2 = missingNumber([0, 1]);
+const expected2 = 1;
+assertEqual(actual2, expected2, 'it should return the number missing from range');
+
+const actual3 = missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]);
+const expected3 = 8;
+assertEqual(actual3, expected3, 'it should return the number missing from range');
+
+const actual4 = missingNumber([0]);
+const expected4 = 1;
+assertEqual(actual4, expected4, 'it should return the number missing from range');

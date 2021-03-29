@@ -43,13 +43,13 @@ All the numbers of nums are unique.
  * @return {number}
  */
 const missingNumber = (nums) => {
-  // create result variable set to 0;
+  let result = 0;
 
-  // iterate over nums
-    // increment result by index plus 1 minus current value
+  for (let i = 0; i < nums.length; i += 1) {
+    result += (i + 1) - nums[i];
+  }
 
-
-  // return result
+  return result;
 };
 
 // ASSERTION FUNCTION
@@ -67,7 +67,7 @@ const expected1 = 2;
 assertEqual(actual1, expected1, 'it should return the number missing from range');
 
 const actual2 = missingNumber([0, 1]);
-const expected2 = 1;
+const expected2 = 2;
 assertEqual(actual2, expected2, 'it should return the number missing from range');
 
 const actual3 = missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]);

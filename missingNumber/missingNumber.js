@@ -43,7 +43,13 @@ All the numbers of nums are unique.
  * @return {number}
  */
 const missingNumber = (nums) => {
+  // create result variable set to 0;
 
+  // iterate over nums
+    // increment result by index plus 1 minus current value
+
+
+  // return result
 };
 
 // ASSERTION FUNCTION

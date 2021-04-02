@@ -29,3 +29,14 @@ Constraints:
 const maxAbsValExpr = (arr1, arr2) => {
 
 };
+
+// ASSERTION FUNCTION
+const assertEqual = (actual, expected, testName) => {
+  if (actual === expected) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED [${testName}] expected "${expected}", but got "${expected}"`);
+  }
+};
+
+// TEST SUITE

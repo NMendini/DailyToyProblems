@@ -27,7 +27,14 @@ Constraints:
  * @return {number}
  */
 const maxAbsValExpr = (arr1, arr2) => {
+  // sort both arrays
 
+  // set i1 variable to last number of sort1
+  // set j1 variable to first number of sort1
+  // set i2 variable to last number of sort2
+  // set j2 variable to last number of sort2
+
+  // return expression
 };
 
 // ASSERTION FUNCTION

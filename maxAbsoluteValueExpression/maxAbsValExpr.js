@@ -40,3 +40,10 @@ const assertEqual = (actual, expected, testName) => {
 };
 
 // TEST SUITE
+const actual1 = maxAbsValExpr([1, 2, 3, 4], [-1, 4, 5, 6]);
+const expected1 = 13;
+assertEqual(actual1, expected1, 'it should return the maximum value of the expression, given two arrays of equal length');
+
+const actual2 = maxAbsValExpr([1, -2, -5, 0, 10], [0, -2, -1, -7, -4]);
+const expected2 = 20;
+assertEqual(actual2, expected2, 'it should return the maximum value of the expression, given two arrays of equal length when negative numbers are present');

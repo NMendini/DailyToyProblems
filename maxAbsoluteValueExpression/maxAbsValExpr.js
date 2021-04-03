@@ -27,46 +27,22 @@ Constraints:
  * @return {number}
  */
 const maxAbsValExpr = (arr1, arr2) => {
-  const max1 = { i: 0, j: 0 };
-  const max2 = { i: 0, j: 0 };
+  const innerFunc = (sign1, sign2) => {
+    let currentMax = -Infinity;
+    let currentMin = Infinity;
 
-  for (let i = 0; i < arr1.length; i += 1) {
-    if (arr1[i] > arr1[max1.i]) {
-      max1.i = i;
+    for (let i = 0; i < arr1.length; i += 1) {
+      const difference = sign1 * arr1[i] + sign2 * arr2[i] + i;
+      currentMax = Math.max(currentMax, difference);
+      currentMin = Math.min(currentMin, difference);
     }
-    if (arr1[i] < arr1[max1.j]) {
-      max1.j = i;
-    }
-    if (arr2[i] > arr2[max2.i]) {
-      max2.i = i;
-    }
-    if (arr2[i] < arr2[max2.j]) {
-      max2.j = i;
-    }
-  }
 
-  const a1a = Math.abs(arr1[max1.i] - arr1[max1.j]);
-  const a1b = Math.abs(arr2[max1.i] - arr2[max1.j]);
-  const a1c = Math.abs(max1.i - max1.j);
+    return currentMax - currentMin;
+  };
 
-  const a2a = Math.abs(arr1[max2.i] - arr1[max2.j]);
-  const a2b = Math.abs(arr2[max2.i] - arr2[max2.j]);
-  const a2c = Math.abs(max2.i - max2.j);
+  const options = [[1, 1], [1, -1], [-1, 1], [-1, -1]];
 
-  return Math.max((a1a + a1b + a1c), (a2a + a2b + a2c));
-
-  // const expr = Math.abs(arr1[i] - arr1[j]) + Math.abs(arr2[i] - arr2[j]) + Math.abs(i - j);
-  // let result = -Infinity;
-
-  // for (let i = 0; i < arr1.length; i += 1) {
-  //   for (let j = 0; j < arr2.length; j += 1) {
-  //     const expr = Math.abs(arr1[i] - arr1[j]) + Math.abs(arr2[i] - arr2[j]) + Math.abs(i - j);
-  //     console.log(arr1[i] - arr1[j], arr2[i] - arr2[j], i - j, 'result: ', expr);
-  //     result = expr > result ? expr : result;
-  //   }
-  // }
-
-  // return result;
+  return Math.max(...options.map((signs) => innerFunc(signs[0], signs[1])));
 };
 
 // ASSERTION FUNCTION
@@ -86,3 +62,7 @@ assertEqual(actual1, expected1, 'it should return the maximum value of the expre
 const actual2 = maxAbsValExpr([1, -2, -5, 0, 10], [0, -2, -1, -7, -4]);
 const expected2 = 20;
 assertEqual(actual2, expected2, 'it should return the maximum value of the expression, given two arrays of equal length when negative numbers are present');
+
+const actual3 = maxAbsValExpr([2, 2, 6, 1, -7, -1, -7], [6, 1, -2, -10, -7, -6, -10]);
+const expected3 = 31;
+assertEqual(actual3, expected3, 'it should return the maximum value of the expression, given two arrays of equal length when duplicate numbers are present');

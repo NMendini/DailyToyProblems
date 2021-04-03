@@ -27,14 +27,46 @@ Constraints:
  * @return {number}
  */
 const maxAbsValExpr = (arr1, arr2) => {
-  // sort both arrays
+  const max1 = { i: 0, j: 0 };
+  const max2 = { i: 0, j: 0 };
 
-  // set i1 variable to last number of sort1
-  // set j1 variable to first number of sort1
-  // set i2 variable to last number of sort2
-  // set j2 variable to last number of sort2
+  for (let i = 0; i < arr1.length; i += 1) {
+    if (arr1[i] > arr1[max1.i]) {
+      max1.i = i;
+    }
+    if (arr1[i] < arr1[max1.j]) {
+      max1.j = i;
+    }
+    if (arr2[i] > arr2[max2.i]) {
+      max2.i = i;
+    }
+    if (arr2[i] < arr2[max2.j]) {
+      max2.j = i;
+    }
+  }
 
-  // return expression
+  const a1a = Math.abs(arr1[max1.i] - arr1[max1.j]);
+  const a1b = Math.abs(arr2[max1.i] - arr2[max1.j]);
+  const a1c = Math.abs(max1.i - max1.j);
+
+  const a2a = Math.abs(arr1[max2.i] - arr1[max2.j]);
+  const a2b = Math.abs(arr2[max2.i] - arr2[max2.j]);
+  const a2c = Math.abs(max2.i - max2.j);
+
+  return Math.max((a1a + a1b + a1c), (a2a + a2b + a2c));
+
+  // const expr = Math.abs(arr1[i] - arr1[j]) + Math.abs(arr2[i] - arr2[j]) + Math.abs(i - j);
+  // let result = -Infinity;
+
+  // for (let i = 0; i < arr1.length; i += 1) {
+  //   for (let j = 0; j < arr2.length; j += 1) {
+  //     const expr = Math.abs(arr1[i] - arr1[j]) + Math.abs(arr2[i] - arr2[j]) + Math.abs(i - j);
+  //     console.log(arr1[i] - arr1[j], arr2[i] - arr2[j], i - j, 'result: ', expr);
+  //     result = expr > result ? expr : result;
+  //   }
+  // }
+
+  // return result;
 };
 
 // ASSERTION FUNCTION
@@ -42,7 +74,7 @@ const assertEqual = (actual, expected, testName) => {
   if (actual === expected) {
     console.log('passed');
   } else {
-    console.log(`FAILED [${testName}] expected "${expected}", but got "${expected}"`);
+    console.log(`FAILED [${testName}] expected "${expected}", but got "${actual}"`);
   }
 };
 
